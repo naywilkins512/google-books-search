@@ -1,6 +1,8 @@
 import './App.css';
+import SearchForm from './components/SearchForm';
 import Jumbotron from './components/Jumbotron';
 import Navbar from './components/Navbar';
+import Results from './components/Results';
 
 
 function App() {
@@ -17,7 +19,12 @@ function App() {
         </div>
         <div className="row">
           <div className="col">
-            
+            <SearchForm />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <Results />
           </div>
         </div>
 
