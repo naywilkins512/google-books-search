@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import API from '../utils/API.js';
 
-function SearchForm (props) {
+function SearchForm(props) {
 
-const [value, setValue] = useState('')
+  const [value, setValue] = useState('')
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -11,32 +11,32 @@ const [value, setValue] = useState('')
 
   const handleSubmit = (event) => {
     console.log(value);
-    event.preventDefault();
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${value}`).then(res => {
+    event.preventDefault()
+    API.searchGoogle(value).then(res => {
       console.log(res);
       props.setBooks(res.data.items)
     })
   }
 
-    return (
-      <div className="jumbotron jumbotron-fluid">
-        <div className="container">
+  return (
+    <div className="jumbotron jumbotron-fluid">
+      <div className="container">
 
-          <p className="lead text-left">Books</p>
+        <p className="lead text-left">Books</p>
 
-          <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
-            <input className="form-control" type="text" value={value} onChange={handleChange} />
+          <input className="form-control" type="text" value={value} onChange={handleChange} />
 
-            <input className="mt-2" type="submit" value="search" />
-          </form>
+          <input className="mt-2" type="submit" value="search" />
+        </form>
 
 
-        </div>
       </div>
+    </div>
 
-    );
-  }
+  );
+}
 
 
 
