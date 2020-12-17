@@ -1,7 +1,7 @@
-import {React, useState} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 
-function SearchForm () {
+function SearchForm (props) {
 
 const [value, setValue] = useState('')
 
@@ -12,7 +12,10 @@ const [value, setValue] = useState('')
   const handleSubmit = (event) => {
     console.log(value);
     event.preventDefault();
-    axios.GET(`https://www.googleapis.com/books/v1/volumes?q=${value}`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${value}`).then(res => {
+      console.log(res);
+      props.setBooks(res.data.items)
+    })
   }
 
     return (
