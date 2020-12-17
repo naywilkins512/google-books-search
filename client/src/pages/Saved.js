@@ -1,7 +1,7 @@
 import './App.css';
 import Jumbotron from './components/Jumbotron';
 import Navbar from './components/Navbar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import API from '../utils/API';
 
 function Saved() {
@@ -31,6 +31,7 @@ function Saved() {
             <div className="row">
                 <div className="col">
                     <Jumbotron />
+                    {books}
                 </div>
             </div>
         </div>
